@@ -11,60 +11,12 @@ angular.module('myApp.view1', ['ngRoute'])
 
 .controller('View1Ctrl', ['$scope', '$http', function($scope, $http) {
 
-	$scope.funcion_prueba = function(){
+	$scope.obtenerDatos = function(){
 		
 
-		var data_falsa = [{"metadata": {
-            "title": "Mi nuevo titulo 1",
-            "subtitle": "Mi nuevo subtitulo",
-            "description": "Mi nueva descripción",
-            "keywords": [
-                "nkey1",
-                "nkey2",
-                "nkey3"
-            ],
-            "authors": [
-                "Mi nuevo autor"
-            ],
-            "contributors": null,
-            "organization": null
-        }
-    },
-    	{"metadata": {
-            "title": "Mi nuevo titulo 2",
-            "subtitle": "Mi nuevo subtitulo",
-            "description": "Mi nueva descripción",
-            "keywords": [
-                "nkey1",
-                "nkey2",
-                "nkey3"
-            ],
-            "authors": [
-                "Mi nuevo autor"
-            ],
-            "contributors": null,
-            "organization": null
-        }
-    },
-    {"metadata": {
-            "title": "Mi nuevo titulo 3",
-            "subtitle": "Mi nuevo subtitulo",
-            "description": "Mi nueva descripción",
-            "keywords": [
-                "nkey1",
-                "nkey2",
-                "nkey3"
-            ],
-            "authors": [
-                "Mi nuevo autor"
-            ],
-            "contributors": null,
-            "organization": null
-        }
-    }
-    ]
+		console.log("Holi");
 
-    $scope.datos = data_falsa;
+        $scope.datos = data_falsa;
 		/**
 		$http({
 		     method: 'GET',
@@ -78,5 +30,58 @@ angular.module('myApp.view1', ['ngRoute'])
 **/
 
 	}
+
+    var data_falsa = [{"metadata": {
+            "title": "Mi nuevo titulo 1",
+            "subtitle": "Mi nuevo subtitulo 1",
+            "description": "Mi nueva descripción 1",
+            "keywords": [
+                "nkey1",
+                "nkey2",
+                "nkey3"
+            ],
+            "authors": [
+                "Mi nuevo autor 1"
+            ],
+            "contributors": null,
+            "organization": null
+        }
+    },
+        {"metadata": {
+            "title": "Mi nuevo titulo 2",
+            "subtitle": "Mi nuevo subtitulo 2",
+            "description": "Mi nueva descripción 2",
+            "keywords": [
+                "nkey1",
+                "nkey2",
+                "nkey3"
+            ],
+            "authors": [
+                "Mi nuevo autor 2"
+            ],
+            "contributors": null,
+            "organization": null
+        }
+    },
+    {"metadata": {
+            "title": "Mi nuevo titulo 3",
+            "subtitle": "Mi nuevo subtitulo 3",
+            "description": "Mi nueva descripción 3",
+            "keywords": [
+                "nkey1",
+                "nkey2",
+                "nkey3"
+            ],
+            "authors": [
+                "Mi nuevo autor 3"
+            ],
+            "contributors": null,
+            "organization": null
+        }
+    }
+    ]
+
+    $scope.datos = data_falsa
+
 }]);
 

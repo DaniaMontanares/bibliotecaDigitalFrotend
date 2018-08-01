@@ -1,7 +1,52 @@
-<div class="alert alert-primary" role="alert">
-  VISTA EJEMPLO
+<!DOCTYPE html>
+<html>
+<body>
+
+<h1 class="display-4">Buscador</h1>
+
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+  <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
+
+<div class="container">
+        <div class="card-body row no-gutters align-items-center">
+            <div class="col-auto">
+                <i class="fas fa-search h4 text-body"></i>
+            </div>
+            <!--end of col-->
+            <div class="col">
+                <input class="form-control form-control-lg form-control-borderless" type="search" id="miBuscador" placeholder="Buscar artículo">
+            </div>
+            <!--end of col-->
+            <div class="col-auto">
+            	<button class="btn btn-primary btn-lg" type="button" class="btn btn-light" ng-click="obtenerDatos()">Buscar</button>
+            </div>
+            <!--end of col-->
+        </div>
 </div>
 
-<button type="button" class="btn btn-light" ng-click="funcion_prueba()">MOSTRAR</button>
+<table class="table table-bordered" style="font-size: 15px" style="width:100%">
+  <thead>
+    <tr>
+      <th scope="col" style="width:15%">Título <br> Subtítulo</th>
+      <th scope="col" style="width:35%">Descripción</th>
+      <th scope="col" style="width:25%">Autor(es)</th>
+      <th scope="col" style="width:25%">Organización</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat= "dato in datos">
+      <td>{{dato.metadata.title}}<br>{{dato.metadata.subtitle}}</td>
+      <td>{{dato.metadata.description}}</td>
+      <td>{{dato.metadata.authors}}</td>
+    </tr>
+  </tbody>
+</table>
 
-<li ng-repeat="dato in datos">{{dato.metadata.title}}</li>
+
+</body>
+</html>
+
+
