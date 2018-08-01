@@ -6,17 +6,39 @@ angular.module('myApp.view1', ['ngRoute'])
   $routeProvider.when('/view1', {
     templateUrl: 'view1/view1.html',
     controller: 'View1Ctrl'
+  }).when('/view2/:idPdf',{
+    templateUrl: 'view2/view2.html',
+    controller: 'View2Ctrl'
   });
 }])
 
-.controller('View1Ctrl', ['$scope', '$http', function($scope, $http) {
+.controller('View1Ctrl', ['$scope', '$http', '$location' ,function($scope, $http,$location) {
 
-	$scope.obtenerDatos = function(){
+    var base_url = "http://localhost:3000/";
+
+	$scope.filtrarDatos = function(){
 		
-
+        var datoBuscador = document.getElementById("miBuscador").value;
 		console.log("Holi");
+        console.log(datoBuscador);
 
-        $scope.datos = data_falsa;
+        //var my_filter = "key1 key4"
+        var my_filter = datoBuscador;
+        $http({
+             method: 'GET',
+             url: base_url + "files/data",
+             params: {
+                filter : my_filter
+             }
+        }).then(function success(responseF) {
+            $scope.datos = responseF.data;
+            console.log(responseF.data)
+        }, function error(responseF) {
+            console.log(responseF.data.err)
+        });
+        
+
+        //$scope.datos = data_falsa;
 		/**
 		$http({
 		     method: 'GET',
@@ -30,8 +52,25 @@ angular.module('myApp.view1', ['ngRoute'])
 **/
 
 	}
+    $scope.seleccionarDocumento=function(id){
+        var id_pdf=id;
+        $http({
+            method: 'GET',
+            url: base_url + "files/data/" + id_pdf
+        }).then(function success(response3) {
+            $scope.tituloDoc = response3.data.metadata.title;
+            console.log(response3.data.metadata.title);
+            console.log("Estoy imprimiendo el id del pdf desde el metodo get");
+            console.log(response3.data._id)
+        }, function error(response3) {
+            console.log(response3.data.err)
+        });
 
-    var data_falsa = [{"metadata": {
+        $location.url('/view2/'+id_pdf);
+
+    }
+
+    /*var data_falsa = [{"metadata": {
             "title": "Mi nuevo titulo 1",
             "subtitle": "Mi nuevo subtitulo 1",
             "description": "Mi nueva descripción 1",
@@ -81,7 +120,18 @@ angular.module('myApp.view1', ['ngRoute'])
     }
     ]
 
-    $scope.datos = data_falsa
+    $scope.datos = data_falsa*/
+
+    //Método get para mostrar la lista de documentos en la base de datos.
+    $http({
+             method: 'GET',
+             url: base_url + "files/data"
+        }).then(function success(response) {
+            $scope.datos = response.data;
+            console.log(response.data)
+        }, function error(response) {
+            console.log(response.data.err)
+        });
 
 }]);
 

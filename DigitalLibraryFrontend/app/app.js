@@ -12,3 +12,10 @@ config(['$locationProvider', '$routeProvider', function($locationProvider, $rout
 
   $routeProvider.otherwise({redirectTo: '/view1'});
 }]);
+
+/*.config(function($routeProvider,$locationProvider){
+	$routeProvider.when('/view1',{
+		templateUrl: "app/view1/view1.html",
+		controller: "view1.js"
+	})
+})*/

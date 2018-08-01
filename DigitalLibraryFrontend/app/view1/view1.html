@@ -21,7 +21,7 @@
             </div>
             <!--end of col-->
             <div class="col-auto">
-            	<button class="btn btn-primary btn-lg" type="button" class="btn btn-light" ng-click="obtenerDatos()">Buscar</button>
+            	<button class="btn btn-primary btn-lg" type="button" class="btn btn-light" ng-click="filtrarDatos()">Buscar</button>
             </div>
             <!--end of col-->
         </div>
@@ -30,22 +30,23 @@
 <table class="table table-bordered" style="font-size: 15px" style="width:100%">
   <thead>
     <tr>
-      <th scope="col" style="width:15%">Título <br> Subtítulo</th>
-      <th scope="col" style="width:35%">Descripción</th>
-      <th scope="col" style="width:25%">Autor(es)</th>
-      <th scope="col" style="width:25%">Organización</th>
+      <th scope="col" style="width:15%">Título <br> Subtítulo </th>
+      <th scope="col" style="width:15%">Autor(es)</th>
+      <th scope="col" style="width:55%">Descripción</th>
+      <th scope="col" style="width:15"> Documento </th>
     </tr>
   </thead>
   <tbody>
     <tr ng-repeat= "dato in datos">
       <td>{{dato.metadata.title}}<br>{{dato.metadata.subtitle}}</td>
-      <td>{{dato.metadata.description}}</td>
       <td>{{dato.metadata.authors}}</td>
+      <td>{{dato.metadata.description}}</td>
+      <td>
+      	<button class="btn btn-primary btn-lg" type="button" class="btn btn-light" ng-click="seleccionarDocumento(dato._id)">Ver Documento</button>
+      </td>
     </tr>
   </tbody>
 </table>
-
-
 </body>
 </html>
 
