@@ -70,6 +70,10 @@ angular.module('myApp.view1', ['ngRoute'])
 
     }
 
+    $scope.agregarDocumento=function(){
+        $location.url('/view3');
+    }
+
     /*var data_falsa = [{"metadata": {
             "title": "Mi nuevo titulo 1",
             "subtitle": "Mi nuevo subtitulo 1",
