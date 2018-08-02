@@ -12,19 +12,18 @@
 
 <div>
 	<form>
-		<input id="tituloDoc" style="font-size: 15px" class="form-control form-control-lg" type="text" placeholder="Título" >
-		<input id="subtituloDoc" style="font-size: 15px" class="form-control form-control-lg" type="text" placeholder="Subtítulo">
-		<input id="descripcionDoc" style="font-size: 15px" class="form-control form-control-lg" type="text" placeholder="Descripción" >
-		<input id="autoresDoc" style="font-size: 15px" class="form-control form-control-lg" type="text" placeholder="Autores" >
-		<input id="palabrasClavesDoc" style="font-size: 15px" class="form-control form-control-lg" type="text" placeholder="Palabras clave" >
-		<input id="contribuidoresDoc" style="font-size: 15px" class="form-control form-control-lg" type="text" placeholder="Contribuidores">
-		<input id="organizacionDoc" style="font-size: 15px" class="form-control form-control-lg" type="text" placeholder="Organización">
-		<input id="archivoPdf" style="font-size: 15px" class="form-control form-control-lg" type="text" placeholder="Archivo pdf" >
+		<input ng-model="tituloDoc" style="font-size: 15px" class="form-control form-control-lg" type="text" placeholder="Título" >
+		<input ng-model="subtituloDoc" style="font-size: 15px" class="form-control form-control-lg" type="text" placeholder="Subtítulo">
+		<input ng-model="descripcionDoc" style="font-size: 15px" class="form-control form-control-lg" type="text" placeholder="Descripción" >
+		<input ng-model="autoresDoc" style="font-size: 15px" class="form-control form-control-lg" type="text" placeholder="Autores" >
+		<input ng-model="palabrasClavesDoc" style="font-size: 15px" class="form-control form-control-lg" type="text" placeholder="Palabras clave" >
+		<input ng-model="contribuidoresDoc" style="font-size: 15px" class="form-control form-control-lg" type="text" placeholder="Contribuidores">
+		<input ng-model="organizacionDoc" style="font-size: 15px" class="form-control form-control-lg" type="text" placeholder="Organización">
 	</form>
 </div>
 
 <center>
-	<button type="button" class="btn btn-primary btn-lg" style="font-size: 15px" ng-click="guardarDocumento()">Publicar</button>
+	<button type="button" class="btn btn-primary btn-lg" style="font-size: 15px" ng-click="guardarDocumento()">Subir Documento</button>
 </center>
 
 </body>
