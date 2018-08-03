@@ -9,27 +9,56 @@ angular.module('myApp.view3', ['ngRoute'])
   });
 }])
 
-.controller('View3Ctrl', ['$scope', '$http', '$location','$routeParams' ,function($scope, $http, $location, $routeParams) {
+.controller('View3Ctrl', ['$scope', '$http', '$location','$routeParams',
+	function($scope, $http, $location, $routeParams  ) {
+
 	console.log("Estoy en la vista de subir documento");
 
 	var base_url = "http://localhost:3000/";
 
 
 	$scope.guardarDocumento = function(){
-		var tituloDoc2 = $scope.tituloDoc;
-		var subtituloDoc2 = $scope.subtituloDoc;
-		var descripcionDoc2 = $scope.descripcionDoc;
-		var autoresDoc2 = $scope.autoresDoc;
-		var palabrasClavesDoc2 = $scope.palabrasClavesDoc;
-		var contribuidoresDoc2 = $scope.contribuidoresDoc;
-		var organizacionDoc2 = $scope.organizacionDoc;
-
-		console.log([tituloDoc2,subtituloDoc2,descripcionDoc2,autoresDoc2,palabrasClavesDoc2,
-			contribuidoresDoc2,organizacionDoc2]);
-
-		console.log("Estoy en la función guardar documento");
 
 
+		console.log($scope.myfile);
+
+		/**
+		var doc = new FormData();
+
+		console.log($scope.tituloDoc);
+		doc.append( "title", $scope.tituloDoc );
+		doc.append( "subtitle", $scope.subtituloDoc );
+		doc.append( "description", $scope.descripcionDoc );
+		doc.append( "authors", $scope.autoresDoc );
+		doc.append( "keywords", $scope.palabrasClavesDoc );
+		doc.append( "contributors", $scope.contribuidoresDoc );
+		doc.append( "organization", $scope.organizacionDoc );
+		doc.append( "file", $scope.myfile );
+
+		var url = base_url + "files/upload/";
+
+		console.log(doc);
+		**/
+
+		const formdata = new FormData();
+
+		formdata.append("file", $scope.myfile);
+		formdata.append("title", "titulo prueba");
+
+		$http.post( base_url + "files/upload", formdata, {
+			withCredentials: true,
+			headers: {'Content-Type':undefined},
+			transformRequest: angular.identity
+		})
+		.then(function success(response) {
+			console.log("Success")
+		}, function error(response) {
+			console.log("Error")
+		});
+
+	   console.log("Estoy en la función guardar documento");
+
+		
 	}
 
 }]);
