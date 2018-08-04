@@ -20,45 +20,32 @@ angular.module('myApp.view3', ['ngRoute'])
 	$scope.guardarDocumento = function(){
 
 
-		console.log($scope.myfile);
-
-		/**
-		var doc = new FormData();
-
-		console.log($scope.tituloDoc);
-		doc.append( "title", $scope.tituloDoc );
-		doc.append( "subtitle", $scope.subtituloDoc );
-		doc.append( "description", $scope.descripcionDoc );
-		doc.append( "authors", $scope.autoresDoc );
-		doc.append( "keywords", $scope.palabrasClavesDoc );
-		doc.append( "contributors", $scope.contribuidoresDoc );
-		doc.append( "organization", $scope.organizacionDoc );
-		doc.append( "file", $scope.myfile );
-
-		var url = base_url + "files/upload/";
-
-		console.log(doc);
-		**/
-
+    // Si quieres, puedes hacer validaciones y wea
+    
 		const formdata = new FormData();
+    if ($scope.tituloDoc != null) formdata.append( "title", $scope.tituloDoc );
+		if ($scope.subtituloDoc != null) formdata.append( "subtitle", $scope.subtituloDoc );
+		if ($scope.descripcionDoc != null) formdata.append( "description", $scope.descripcionDoc );
+		if ($scope.autoresDoc != null) formdata.append( "authors", $scope.autoresDoc );
+		if ($scope.palabrasClavesDoc != null) formdata.append( "keywords", $scope.palabrasClavesDoc );
+		if ($scope.contribuidoresDoc != null) formdata.append( "contributors", $scope.contribuidoresDoc );
+		if ($scope.organizacionDoc != null) formdata.append( "organization", $scope.organizacionDoc );
+		if ($scope.myfile != null) formdata.append("file", $scope.myfile);
 
-		formdata.append("file", $scope.myfile);
-		formdata.append("title", "titulo prueba");
-
-		$http.post( base_url + "files/upload", formdata, {
-			withCredentials: true,
+    $http.post( base_url + "files/upload", formdata, {
 			headers: {'Content-Type':undefined},
 			transformRequest: angular.identity
 		})
 		.then(function success(response) {
-			console.log("Success")
+      // Aqui es cuando el archivo se subio. response.data deberia contener el archivo
+			console.log(response.data)
 		}, function error(response) {
-			console.log("Error")
+      // Response.data.err tiene un mensaje de error que puedes desplegar
+			console.log(response.data.err)
 		});
 
-	   console.log("Estoy en la función guardar documento");
+    // Podrias mostrar una ventanita de espera que se cierre cuando success o error ocurran
 
-		
 	}
 
 }]);

@@ -3,7 +3,6 @@
 // Declare app level module which depends on views, and components
 angular.module('myApp', [
   'ngRoute',
-  'naif.base64',
   'myApp.view1',
   'myApp.view2',
   'myApp.view3',
@@ -21,7 +20,7 @@ config(['$locationProvider', '$routeProvider', function($locationProvider, $rout
                link: function(scope, element, attrs) {
                   var model = $parse(attrs.fileModel);
                   var modelSetter = model.assign;
-                  
+
                   element.bind('change', function(){
                      scope.$apply(function(){
                         modelSetter(scope, element[0].files[0]);
