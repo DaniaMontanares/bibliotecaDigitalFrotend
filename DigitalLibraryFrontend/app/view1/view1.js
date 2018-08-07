@@ -54,18 +54,18 @@ angular.module('myApp.view1', ['ngRoute'])
 	}
     $scope.seleccionarDocumento=function(id){
         var id_pdf=id;
+        /*var base_url = "http://localhost:3000/";
         $http({
             method: 'GET',
             url: base_url + "files/data/" + id_pdf
         }).then(function success(response3) {
             $scope.tituloDoc = response3.data.metadata.title;
             console.log(response3.data.metadata.title);
-            console.log("Estoy imprimiendo el id del pdf desde el metodo get");
+            console.log("Estoy imprimiendo el id del pdf desde el metodo get de la vista 2");
             console.log(response3.data._id)
         }, function error(response3) {
             console.log(response3.data.err)
-        });
-
+        });*/
         $location.url('/view2/'+id_pdf);
 
     }

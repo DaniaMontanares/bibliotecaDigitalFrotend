@@ -1,5 +1,4 @@
 'use strict';
-
 angular.module('myApp.view2', ['ngRoute'])
 
 .config(['$routeProvider', function($routeProvider) {
@@ -9,21 +8,30 @@ angular.module('myApp.view2', ['ngRoute'])
   });
 }])
 
-.controller('View2Ctrl', ['$scope', '$http', '$location','$routeParams' ,function($scope, $http, $location, $routeParams) {
+.controller('View2Ctrl', ['$scope', '$http', '$location','$routeParams', '$sce' ,
+function($scope, $http, $location, $routeParams, $sce) {
 	var id_pdf = $routeParams.idPdf;
 	console.log("Estoy imprimiento el id del pdf desde la vista 2");
-	//console.log($routeParams.idPdf);
+	console.log(id_pdf);
 
-	/*var base_url = "http://localhost:3000/";
+	$scope.condition=true;
+
+	var base_url = "http://localhost:3000/";
 
 	$http({
-			method: 'GET',
-			url: base_url + "files/document/" + id_pdf
-		}).then(function success(response) {
-			console.log(response.data);
-			$scope.data_pdf = response.data;
-		}, function error(response) {
-			console.log(response.data.err)
-		});*/
+	   method : "GET",
+       url: base_url + "files/document/" + id_pdf,
+       responseType : 'arraybuffer',
+       headers: {accept: 'application/pdf' },
+       cache: true,
+	}).then(function success(response){
+		var file = new Blob([response.data], {type: 'application/pdf'});
+		var fileURL = URL.createObjectURL(file);
+		console.log(fileURL);
+		$scope.content = $sce.trustAsResourceUrl(fileURL);
+		$scope.condition=false;
+	});
+
+	
 
 }]);
